@@ -149,6 +149,10 @@ public class FileManager {
                 @Override
                 public void valueChanged(ListSelectionEvent lse) {
                     int row = table.getSelectionModel().getLeadSelectionIndex();
+                  	RowSorter sorter = table.getRowSorter();
+                  	if ( sorter != null ) {
+                  	    row = sorter.convertRowIndexToModel( row );                            
+                  	}
                     setFileDetails( ((FileTableModel)table.getModel()).getFile(row) );
                 }
             };
